@@ -48,7 +48,7 @@ public class HttpControllerTest {
 // {
 //			"id" : 1,
 //			"password" : 5555,
-//		}
+// }
 	
 	//http://localhost:8080/http/delete (delete)
 	@DeleteMapping("/http/delete")
