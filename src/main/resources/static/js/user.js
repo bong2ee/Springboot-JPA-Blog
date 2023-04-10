@@ -6,7 +6,14 @@ let index = {
         },
 
         save: function() {
-            alert('user의 save함수 호출됨');
+            //alert('user의 save함수 호출됨');
+            let data = {
+                username: $("#username").val(),
+                password: $("#password").val(),
+                email: $("#password").val()
+            }
+
+            console.log(data);
     }
 }
 
