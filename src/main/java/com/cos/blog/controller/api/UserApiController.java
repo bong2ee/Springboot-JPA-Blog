@@ -22,7 +22,7 @@ public class UserApiController {
 		System.out.println("UserApiController : save 호출됨");
 		// 실제로 DB에 insert를 하고 아래에서 return
 		user.setRoll(RoleType.USER);
-		int result = userService.회원가입(user); 
-		return new ResponseDto<Integer>(HttpStatus.OK, result); // 1이면 성공, -1이면 실패
+		userService.회원가입(user); 
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 }

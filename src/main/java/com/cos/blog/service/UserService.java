@@ -19,6 +19,7 @@ public class UserService {
 	public int 회원가입(User user) {
 		try {
 			userRepository.save(user);
+			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("UserService : 회원가입() : " + e.getMessage());
