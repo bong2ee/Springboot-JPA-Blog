@@ -18,9 +18,6 @@ public class UserApiController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private HttpSession session;
 	
 	@PostMapping("/api/user")
 	public ResponseDto<Integer> save(@RequestBody User user) { // json-RequestBody / username, passwor, email만 받음--> role은 넣어줘야 함
@@ -31,13 +28,15 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@PostMapping("/api/user/login")
-	public ResponseDto<Integer> login(@RequestBody User user) { // json-RequestBody / username, passwor, email만 받음--> role은 넣어줘야 함
-		System.out.println("UserApiController : login 호출됨");
-		User principal = userService.로그인(user); // principal (접근주체)
-		if(principal != null) {
-			session.setAttribute("principal", principal);
-		}
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}
+/*	
+ *	@PostMapping("/api/user/login")
+ *  public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) { // json-RequestBody / username, passwor, email만 받음--> role은 넣어줘야 함
+ *		System.out.println("UserApiController : login 호출됨");
+ *	 	User principal = userService.로그인(user); // principal (접근주체)
+ *		if(principal != null) {
+ *			session.setAttribute("principal", principal);
+ *		}
+ *		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+ *	}
+ */
 }
