@@ -1,4 +1,4 @@
-package com.cos.blog.config;
+ package com.cos.blog.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,17 +10,19 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration // IoC
 public class SecurityConfig {
-
-	@Bean
-	BCryptPasswordEncoder encode() {
+	
+	@Bean //IoC
+	BCryptPasswordEncoder encode() { //encode 함수 호출 -> BCryptPasswordEncoder 객체 리턴 
 		return new BCryptPasswordEncoder();
 	}
+	
 
 	@Bean
 	SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http
+				.csrf().disable() //csrf 토큰 비활성화
 				.authorizeRequests()
-				.antMatchers("/auth/**")//이쪽 경로로 요청이 들어오면 누구나 허용
+				.antMatchers("/", "/auth/**", "/js/**" , "/css/**", "/image/**")//이쪽 경로로 요청이 들어오면 누구나 허용
 				.permitAll()
 				.anyRequest()
 				.authenticated()//다른 요청은 인증이 필요
